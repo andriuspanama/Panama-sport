@@ -1,0 +1,199 @@
+<!doctype html><html lang="lt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Forma</title><meta name="theme-color" content="#0a0b0c"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Forma"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&display=swap"><style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--g:rgba(255,255,255,.06);--b:rgba(255,255,255,.1);--t:#ececec;--m:#8b8e93;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;color:var(--t);font:300 16px/1.45 -apple-system,"Helvetica Neue",Inter,Arial,sans-serif;background:#08090a radial-gradient(110% 55% at 75% -8%,#34383d 0,#121416 45%,#08090a 80%) fixed}
+body:before{content:"";position:fixed;inset:0;opacity:.35;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.012 .03' numOctaves='5'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.4 -.55'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+#app{z-index:1;position:relative;max-width:480px;margin:0 auto;padding:22px 46px 150px 22px}
+h1{font-weight:300;font-size:34px;line-height:1.1;margin:22px 0 4px;letter-spacing:-.5px}
+h1 small{display:block;font-size:15px;color:var(--m);margin-top:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.pill,button,select,input{font:inherit;color:inherit}
+.pill{padding:8px 16px;border-radius:99px;background:var(--g);border:1px solid var(--b);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--m);font-size:14px}
+.pill.on{color:#fff;background:rgba(255,255,255,.16)}
+.card{background:var(--g);border:1px solid var(--b);border-radius:28px;padding:18px;margin:12px 0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.card b{font-weight:400;font-size:18px}
+.m{color:var(--m);font-size:13px;margin-top:3px}
+.up{color:#fff}
+.set{display:grid;grid-template-columns:22px 1fr 1fr 42px;gap:8px;align-items:center;margin-top:10px;color:var(--m);font-size:13px}
+.set input,.in{width:100%;min-width:0;padding:10px 14px;border-radius:99px;background:rgba(0,0,0,.28);border:1px solid var(--b);font-size:15px;outline:0}
+.set input:focus,.in:focus{border-color:rgba(255,255,255,.4)}
+.ck{width:42px;height:42px;border-radius:50%;background:var(--g);border:1px solid var(--b);color:var(--m)}
+.ck.on{background:#f2f2f2;color:#111}
+.big{display:block;width:100%;padding:16px;border-radius:99px;background:#f2f2f2;color:#111;border:0;font-size:16px;margin-top:18px}
+#line{position:fixed;right:max(18px,calc(50% - 222px));top:120px;height:46vh;width:2px;background:var(--b);border-radius:2px}
+#line i{display:block;width:100%;background:#fff;border-radius:2px;transition:height .4s}
+#cnt{position:fixed;right:max(8px,calc(50% - 232px));top:96px;font-size:12px;color:var(--m);width:40px;text-align:center}
+#rest{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(92px + env(safe-area-inset-bottom,0px));display:flex;gap:6px;align-items:center;padding:6px 8px 6px 18px;border-radius:99px;background:rgba(30,32,35,.8);border:1px solid var(--b);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:5}
+#rest .pill{padding:6px 12px}
+#nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;padding:8px;border-radius:99px;background:rgba(30,32,35,.7);border:1px solid var(--b);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:5}
+#nav button{border:0;background:0;padding:12px 22px;border-radius:99px;color:var(--m)}
+#nav button.on{background:#f2f2f2;color:#111}
+svg text{fill:#8b8e93;font-size:8px}
+.li{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--b);font-size:14px}
+.li:first-child{border:0}
+.bar{display:flex;gap:10px}.bar>*{flex:1}
+.ic{width:16px;height:16px;vertical-align:-3px}.hd{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.hd span{display:flex;gap:4px}.hd .pill{padding:4px 10px;font-size:12px}#wm{position:fixed;left:0;right:0;top:46%;text-align:center;white-space:nowrap;font:600 clamp(24px,8vw,44px)/1 Unbounded,"Arial Black",Impact,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.05);filter:blur(1.5px);pointer-events:none;z-index:0}.fig{display:block;width:100%;height:150px;margin-top:10px;border-radius:20px;background:rgba(0,0,0,.25)}</style></head><body><div id="wm">Panama Sport</div><div id="app"></div><div id="line"></div><div id="cnt"></div><div id="rest" hidden></div>
+<div id="nav"><button data-a="v" data-k="w">Treniruotė</button><button data-a="v" data-k="p">Progresas</button></div>
+<script>
+// ---- PROGRAM: edit here. LIB: name:[equipment, sets, [min,max reps], cue, rest s] ----
+const EQ={kb:"Kettlebell",rg:"Rings",bd:"Bands",ab:"Ab wheel",bw:"Bodyweight"};
+const IC={kb:'<circle cx="12" cy="15" r="6"/><path d="M8.5 10.5C8 4 16 4 15.5 10.5"/>',rg:'<circle cx="7" cy="15" r="4"/><circle cx="17" cy="15" r="4"/><path d="M7 11V3M17 11V3"/>',bd:'<path d="M3 12c3-6 5 6 9 0s6 6 9 0"/>',ab:'<circle cx="12" cy="12" r="6"/><path d="M3 12h18"/>',bw:'<circle cx="12" cy="5" r="2"/><path d="M12 8v6M7 10l5-2 5 2M9 21l3-7 3 7"/>'};
+const ic=k=>`<svg class=ic viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=1.6 stroke-linecap=round>${IC[k]}</svg>`;
+const LIB={
+"Goblet Squat":["kb",3,[8,12],"Bell at chest, knees track over toes",90],
+"Kettlebell Swing":["kb",3,[12,15],"Hinge, snap the hips, arms relaxed",90],
+"Romanian Deadlift":["kb",3,[8,12],"Hips back, flat back",90],
+"Sumo Deadlift":["kb",3,[10,12],"Wide stance, chest up",90],
+"Reverse Lunge":["kb",3,[8,12],"Step back, control the descent",90],
+"Overhead Press":["kb",3,[6,10],"Ribs down, press in a straight line",90],
+"Single-Arm Row":["kb",3,[8,12],"Elbow to hip, hips square",75],
+"Bent-Over Row":["kb",3,[8,12],"Flat back, pull to lower ribs",75],
+"Front Squat":["kb",3,[6,10],"Elbows high, torso upright",90],
+"Kettlebell Clean":["kb",3,[6,8],"Hip drive, bell stays close",75],
+"Floor Press":["kb",3,[8,12],"Elbow at 45°, pause on the floor",75],
+"Cossack Squat":["kb",3,[6,10],"Sit deep to one side, other leg straight",75],
+"Halo":["kb",2,[8,10],"Circle the head slowly, ribs down",45],
+"Windmill":["kb",2,[5,8],"Hinge at the hip, eyes on the bell",60],
+"Turkish Get-Up":["kb",2,[2,4],"Slow, eyes on the bell, both sides",90],
+"Suitcase Carry":["kb",3,[30,40],"Walk tall, don't lean (seconds)",60],
+"Russian Twist":["kb",3,[12,20],"Lean back slightly, rotate the ribs",45],
+"Calf Raise":["kb",3,[12,20],"Full range, pause at the top",45],
+"Ring Row":["rg",3,[8,12],"Body straight, chest to the rings",75],
+"Ring Push-Up":["rg",3,[6,12],"Turn rings out at the top",90],
+"Ring Dip":["rg",3,[4,8],"Rings close to the body, lower slowly",90],
+"Ring Pull-Up":["rg",3,[3,8],"Full hang to chin over rings",120],
+"Ring Face Pull":["rg",3,[10,15],"Pull to the eyes, elbows high",60],
+"Ring Fallout":["rg",3,[6,10],"Brace the core, reach forward slowly",60],
+"Ring Bicep Curl":["rg",3,[8,12],"Elbows fixed, slow lowering",60],
+"Ring Tricep Extension":["rg",3,[8,12],"Body straight, elbows tucked",60],
+"Ring Support Hold":["rg",3,[15,30],"Arms locked, rings turned out (seconds)",60],
+"Band Row":["bd",3,[10,15],"Squeeze shoulder blades, elbows close",60],
+"Band Face Pull":["bd",3,[12,20],"Band at eye level, elbows high",60],
+"Band Pull-Apart":["bd",3,[15,20],"Arms straight, pull to chest level",45],
+"Band Chest Press":["bd",3,[10,15],"Band behind the back, press forward",60],
+"Band Overhead Press":["bd",3,[8,12],"Stand on the band, press straight up",60],
+"Band Pallof Press":["bd",3,[8,12],"Resist rotation, both sides",60],
+"Band Lateral Raise":["bd",3,[12,20],"Light and slow, lead with elbows",45],
+"Band Tricep Extension":["bd",3,[12,20],"Elbows pinned to the sides",45],
+"Band Curl":["bd",3,[10,15],"Stand on the band, no swinging",45],
+"Band Good Morning":["bd",3,[10,15],"Hinge at the hips, flat back",60],
+"Band Squat":["bd",3,[12,15],"Stand on the band, drive through the heels",60],
+"Ab Wheel Rollout":["ab",3,[5,10],"Hollow body, go only as far as you control",75],
+"Push-Up":["bw",3,[6,15],"Straight body, elbows 45°",90],
+"Plank":["bw",3,[30,45],"Ribs down, glutes tight (seconds)",45],
+"Dead Bug":["bw",3,[8,12],"Lower back stays on the floor",45],
+"Hollow Hold":["bw",3,[20,30],"Low back pressed down (seconds)",45],
+"Glute Bridge":["bw",3,[12,15],"Pause and squeeze at the top",45],
+"Bird Dog":["bw",3,[8,12],"Slow, hips level",45]};
+const P={
+fb:{n:"Full Body",days:{
+A:["Goblet Squat","Kettlebell Swing","Band Row","Push-Up","Romanian Deadlift","Plank"],
+B:["Reverse Lunge","Overhead Press","Band Face Pull","Sumo Deadlift","Band Chest Press","Band Pallof Press"]}},
+ppl:{n:"Push / Pull / Legs",days:{
+Push:["Overhead Press","Push-Up","Band Chest Press","Band Lateral Raise","Band Tricep Extension"],
+Pull:["Single-Arm Row","Band Row","Band Face Pull","Band Curl","Kettlebell Swing"],
+Legs:["Goblet Squat","Romanian Deadlift","Reverse Lunge","Calf Raise","Plank"]}}};
+const names=()=>D.cust[S.p+":"+S.d]||P[S.p].days[S.d];
+const ex=()=>names().map(n=>{const l=LIB[n];return[n,l[1],l[2],l[3],l[4],l[0]]});
+const setNames=a=>{D.cust[S.p+":"+S.d]=a;save()};
+function libUI(){if(!S.lib)return `<button class=pill style="width:100%;margin-top:6px" data-a=lib>+ Add exercise</button>`;const q=S.lib;
+return `<div class=card><div class=row>${Object.keys(EQ).map(k=>`<button class="pill ${q.eq==k?"on":""}" data-a=eq data-k=${k}>${ic(k)} ${EQ[k]}</button>`).join("")}</div><div class=m>${q.at!=null?"Swap with":"Add to this day"}</div>${Object.keys(LIB).filter(n=>LIB[n][0]==q.eq).map(n=>`<div class=li><span>${n}<div class=m>${LIB[n][1]} × ${LIB[n][2][0]}–${LIB[n][2][1]}</div></span><button class=pill data-a=add data-n="${n}">${q.at!=null?"Swap":"Add"}</button></div>`).join("")}<div class=bar style="margin-top:12px"><button class=pill data-a=lib>Close</button><button class=pill data-a=rs>Reset day</button></div></div>`}
+// ---- BŪSENA ----
+let D={log:[],bw:[]},S={p:"fb",d:"A",v:"w",cur:[],sel:"",lib:null,fig:null},R={t:0,iv:0};
+try{D=JSON.parse(localStorage.getItem("forma1"))||D}catch(e){}D.cust=D.cust||{};D.bw=D.bw||[];
+const save=()=>{try{localStorage.setItem("forma1",JSON.stringify(D))}catch(e){}};
+function lastOf(n){for(let i=D.log.length-1;i>=0;i--){const s=D.log[i].x[n];if(s)return s}return null}
+function pickDay(){const ds=Object.keys(P[S.p].days);let l=null;for(const s of D.log)if(s.p==S.p)l=s;S.d=l?ds[(ds.indexOf(l.d)+1)%ds.length]||ds[0]:ds[0]}
+const mk=e=>Array.from({length:e[1]},(_,i)=>{const l=lastOf(e[0]),v=l&&(l[i]||l[l.length-1]);return{w:v?v[0]:"",r:v?v[1]:"",ok:0}});function initCur(){S.cur=ex().map(mk)}
+function startRest(s){R.t=s;clearInterval(R.iv);R.iv=setInterval(()=>{R.t--;if(R.t<=0){clearInterval(R.iv);try{navigator.vibrate&&navigator.vibrate(200)}catch(e){}}rest()},1000);rest()}
+function rest(){const el=document.getElementById("rest");if(R.t<=0){el.hidden=true;return}el.hidden=false;el.innerHTML=`<span>Poilsis ${Math.floor(R.t/60)}:${String(R.t%60).padStart(2,"0")}</span><button class="pill" data-a="r15">+15s</button><button class="pill" data-a="rx">Praleisti</button>`}
+const fmt=s=>(s[0]?s[0]+"×":"")+s[1];
+// ---- PIEŠIMAS ----
+function render(){
+const all=S.cur.flat(),done=all.filter(s=>s.ok).length;let h="";
+document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==S.v));
+document.getElementById("line").style.display=document.getElementById("cnt").style.display=S.v=="w"?"":"none";
+if(S.v=="w"){
+h=`<div class=row>${Object.keys(P).map(k=>`<button class="pill ${S.p==k?"on":""}" data-a=p data-k="${k}">${P[S.p==k?k:k].n}</button>`).join("")}</div>
+<div class=row>${Object.keys(P[S.p].days).map(k=>`<button class="pill ${S.d==k?"on":""}" data-a=d data-k="${k}">${k}</button>`).join("")}</div>
+<h1>${P[S.p].n}<small>${S.d} diena · apšilimas 5 min: klubai, pečiai, krūtinės slankstelių mobilumas</small></h1>`;
+h+=ex().map((x,i)=>{const l=lastOf(x[0]),up=l&&l.length>=x[1]&&l.every(s=>s[1]>=x[2][1]);
+return `<div class=card><div class=hd><b data-a=fg data-i=${i} style="cursor:pointer">${ic(x[5])} ${x[0]} <span class=m>▾</span></b><span><button class=pill data-a=sw data-i=${i}>Swap</button><button class=pill data-a=rm data-i=${i}>✕</button></span></div><div class=m>${x[1]} × ${x[2][0]}–${x[2][1]} · ${x[3]}</div>${S.fig===i?`<svg class=fig viewBox="0 -6 100 84" data-p="${PM[x[0]]||"st"}" data-e="${x[5]}"></svg>`:""}${l?`<div class=m>Praeitą kartą: ${l.map(fmt).join(" · ")}${up?` <span class=up>– didink svorį ar pakartojimus</span>`:""}</div>`:""}
+${S.cur[i].map((s,j)=>`<div class=set><span>${j+1}</span><input inputmode=decimal placeholder="kg / lygis" value="${s.w}" data-i=${i} data-j=${j} data-f=w><input inputmode=numeric placeholder="pakart." value="${s.r}" data-i=${i} data-j=${j} data-f=r><button class="ck ${s.ok?"on":""}" data-a=ck data-i=${i} data-j=${j}>✓</button></div>`).join("")}</div>`}).join("");
+h+=libUI()+`<button class=big data-a=fin>Baigti treniruotę</button>`;
+document.querySelector("#line").innerHTML=`<i style="height:${all.length?done/all.length*100:0}%"></i>`;
+document.getElementById("cnt").textContent=done+"/"+all.length;
+}else{
+const names=[...new Set(D.log.flatMap(s=>Object.keys(s.x)))];if(!S.sel||!names.includes(S.sel))S.sel=names[0]||"";
+const wk=D.log.filter(s=>Date.now()-new Date(s.t)<6048e5).length;
+h=`<h1>Progresas<small>${D.log.length} treniruočių iš viso · ${wk} per 7 dienas</small></h1>`;
+if(!names.length)h+=`<div class=card><div class=m>Dar nėra duomenų. Baigk pirmą treniruotę ir čia atsiras grafikai.</div></div>`;
+else{
+const pts=D.log.filter(s=>s.x[S.sel]).slice(-12).map(s=>Math.max(...s.x[S.sel].map(z=>z[0]||z[1]))),mx=Math.max(...pts,1);
+h+=`<div class=card><select class=in data-a=sel>${names.map(n=>`<option ${n==S.sel?"selected":""}>${n}</option>`).join("")}</select>
+<div class=m style="margin:10px 0 6px">Geriausia serija (kg arba pakartojimai)</div>
+<svg viewBox="0 0 300 110" width=100%>${pts.map((v,i)=>{const w=300/pts.length,bh=v/mx*80;return `<rect x="${i*w+w*.2}" y="${90-bh}" width="${w*.6}" height="${bh}" rx="4" fill="#f2f2f2" opacity="${.35+.65*(i+1)/pts.length}"/><text x="${i*w+w/2}" y="104" text-anchor="middle">${v}</text>`}).join("")}</svg></div>`}
+const bw=D.bw.slice(-6).reverse();
+h+=`<div class=card><b>Kūno svoris</b><div class=bar style="margin:12px 0"><input class=in id=bwv inputmode=decimal placeholder="kg"><button class=pill data-a=bw>Išsaugoti</button></div>${bw.map(r=>`<div class=li><span>${r[0]}</span><span>${r[1]} kg</span></div>`).join("")}</div>
+<div class=card><b>Duomenys</b><div class=bar style="margin-top:12px"><button class=pill data-a=exp>Eksportuoti</button><button class=pill data-a=imp>Importuoti</button></div></div>`;
+}
+document.getElementById("app").innerHTML=h;}
+// ---- ĮVYKIAI ----
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,i=+b.dataset.i,j=+b.dataset.j;
+if(a=="p"){S.p=b.dataset.k;S.lib=null;pickDay();initCur()}
+else if(a=="d"){S.d=b.dataset.k;S.lib=null;initCur()}
+else if(a=="v"){S.v=b.dataset.k}
+else if(a=="ck"){const s=S.cur[i][j];s.ok=s.ok?0:1;if(s.ok)startRest(ex()[i][4]||60)}
+else if(a=="fg"){S.fig=S.fig===i?null:i}
+else if(a=="lib"){S.lib=S.lib?null:{eq:"kb",at:null}}
+else if(a=="eq"){S.lib.eq=b.dataset.k}
+else if(a=="sw"){S.lib={eq:LIB[names()[i]][0],at:i}}
+else if(a=="add"){const arr=names().slice(),at=S.lib.at;if(at!=null)arr[at]=b.dataset.n;else arr.push(b.dataset.n);setNames(arr);const k=at!=null?at:arr.length-1;S.cur[k]=mk(ex()[k]);S.lib=null}
+else if(a=="rm"){const arr=names().slice();arr.splice(i,1);S.cur.splice(i,1);S.fig=null;setNames(arr)}
+else if(a=="rs"){delete D.cust[S.p+":"+S.d];save();S.lib=null;initCur()}
+else if(a=="r15"){R.t+=15;rest();return}
+else if(a=="rx"){R.t=0;clearInterval(R.iv);rest();return}
+else if(a=="fin"){const x={};ex().forEach((e2,k)=>{const d=S.cur[k].filter(s=>s.ok).map(s=>[parseFloat(String(s.w).replace(",","."))||0,parseInt(s.r)||0]);if(d.length)x[e2[0]]=d});
+if(!Object.keys(x).length){alert("Pažymėk bent vieną atliktą seriją.");return}
+D.log.push({t:new Date().toISOString(),p:S.p,d:S.d,x});save();R.t=0;clearInterval(R.iv);rest();pickDay();initCur();S.v="p"}
+else if(a=="bw"){const v=parseFloat(document.getElementById("bwv").value.replace(",","."));if(v){D.bw.push([new Date().toISOString().slice(0,10),v]);save()}}
+else if(a=="exp"){const t=JSON.stringify(D);try{navigator.clipboard.writeText(t);alert("Nukopijuota į iškarpinę. Išsaugok tekstą kur nors saugiai.")}catch(er){prompt("Nukopijuok:",t)}return}
+else if(a=="imp"){const t=prompt("Įklijuok eksportuotus duomenis:");if(t){try{const o=JSON.parse(t);if(o.log){D=o;save()}}catch(er){alert("Netinkamas formatas.")}}}
+render()});
+document.addEventListener("input",e=>{const t=e.target;if(t.dataset.f){S.cur[+t.dataset.i][+t.dataset.j][t.dataset.f]=t.value}});
+document.addEventListener("change",e=>{if(e.target.dataset.a=="sel"){S.sel=e.target.value;render()}});
+// ---- Movement guides (simplified): joints H S E W P K A [K2 A2] ----
+const PS={sq:["50,12 50,22 56,32 54,26 50,44 50,58 50,72","58,26 54,36 60,46 58,38 40,58 62,58 52,72"],
+hg:["50,12 50,22 50,34 52,44 50,44 50,58 50,72","74,40 66,42 66,52 66,60 42,48 46,60 50,72"],
+sw:["74,40 66,42 56,50 48,56 42,48 46,60 50,72","50,12 50,22 60,22 72,22 50,44 50,58 50,72"],
+lg:["50,12 50,22 50,34 52,44 50,44 50,58 50,72","50,24 50,34 50,46 52,54 50,56 62,60 62,72 40,68 26,70"],
+pr:["50,12 50,22 58,30 54,20 50,44 50,58 50,72","50,12 50,22 52,10 52,-1 50,44 50,58 50,72"],
+rw:["76,38 66,42 66,52 66,62 42,48 46,60 50,72","76,38 66,42 56,48 62,46 42,48 46,60 50,72"],
+pu:["78,38 68,42 68,52 68,62 40,50 24,56 8,62","78,54 68,56 58,58 68,62 40,58 24,60 8,62"],
+hd:["78,48 68,52 68,62 78,62 38,56 22,60 8,62","78,47 68,50 68,62 78,62 38,53 22,58 8,62"],
+cu:["50,12 50,22 51,34 52,46 50,44 50,58 50,72","50,12 50,22 51,34 58,24 50,44 50,58 50,72"],
+ra:["50,12 50,22 51,34 52,46 50,44 50,58 50,72","50,12 50,22 56,24 70,24 50,44 50,58 50,72"],
+pl:["50,12 50,22 60,23 72,23 50,44 50,58 50,72","50,12 50,22 48,28 56,22 50,44 50,58 50,72"],
+cp:["50,12 50,22 54,32 58,26 50,44 50,58 50,72","50,12 50,22 60,23 74,23 50,44 50,58 50,72"],
+ro:["40,32 40,40 44,52 46,62 30,52 30,62 14,62","80,46 72,50 78,56 84,62 40,54 30,62 14,62"],
+br:["12,60 26,60 34,60 44,60 40,60 54,48 60,60","12,60 26,58 34,60 44,60 40,46 54,46 60,60"],
+st:["50,12 50,22 50,34 50,46 50,44 50,58 50,72","50,8 50,18 50,30 50,42 50,40 50,54 50,68"],
+rr:["74,40 64,44 66,34 66,22 40,54 26,61 12,68","70,30 62,32 70,36 66,22 40,42 26,50 12,58"],
+pp:["50,18 50,28 50,13 50,-2 50,50 50,62 50,72","50,4 50,14 56,8 50,-2 50,36 50,48 50,58"]};
+const PM={"Goblet Squat":"sq","Kettlebell Swing":"sw","Romanian Deadlift":"hg","Sumo Deadlift":"hg","Reverse Lunge":"lg","Overhead Press":"pr","Single-Arm Row":"rw","Bent-Over Row":"rw","Front Squat":"sq","Kettlebell Clean":"sw","Floor Press":"cp","Cossack Squat":"sq","Halo":"st","Windmill":"hg","Turkish Get-Up":"st","Suitcase Carry":"st","Russian Twist":"hd","Calf Raise":"st","Ring Row":"rr","Ring Push-Up":"pu","Ring Dip":"pu","Ring Pull-Up":"pp","Ring Face Pull":"pl","Ring Fallout":"ro","Ring Bicep Curl":"cu","Ring Tricep Extension":"cu","Ring Support Hold":"st","Band Row":"pl","Band Face Pull":"pl","Band Pull-Apart":"pl","Band Chest Press":"cp","Band Overhead Press":"pr","Band Pallof Press":"cp","Band Lateral Raise":"ra","Band Tricep Extension":"cu","Band Curl":"cu","Band Good Morning":"hg","Band Squat":"sq","Ab Wheel Rollout":"ro","Push-Up":"pu","Plank":"hd","Dead Bug":"br","Hollow Hold":"hd","Glute Bridge":"br","Bird Dog":"hd"};
+const pc={},pose=q=>pc[q]||(pc[q]=q.split(" ").map(z=>z.split(",").map(Number)));
+function draw(p,e,t){const A=pose(PS[p][0]),B=pose(PS[p][1]),g=(X,i)=>X[i]||X[i==7?5:6],J=[];
+for(let i=0;i<9;i++){const a=g(A,i),b=g(B,i);J.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t])}
+const[H,S,E,W,P,K,An,K2,A2]=J,L=(a,b,o)=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"${o?` opacity="${o}"`:""}/>`;
+let pr="";if(e=="kb")pr=`<circle cx="${W[0]}" cy="${W[1]+3}" r="4.5" fill="#f2f2f2" stroke="none"/><path d="M${W[0]-3} ${W[1]+1}a3 3 0 0 1 6 0" stroke-width="1.5"/>`;
+else if(e=="rg")pr=`<line x1="${W[0]}" y1="${W[1]}" x2="${W[0]}" y2="-6" stroke-width="1" opacity=".4"/><circle cx="${W[0]}" cy="${W[1]}" r="4.5" stroke-width="1.6"/>`;
+else if(e=="bd")pr=`<line x1="${W[0]}" y1="${W[1]}" x2="98" y2="${W[1]}" stroke-width="1.4" stroke-dasharray="3 3" opacity=".6"/>`;
+else if(e=="ab")pr=`<circle cx="${W[0]}" cy="${W[1]}" r="5" stroke-width="2"/>`;
+return `<g stroke="#f2f2f2" stroke-width="3" stroke-linecap="round" fill="none">${L(P,K2,.35)}${L(K2,A2,.35)}${L(S,P)}${L(S,E)}${L(E,W)}${L(P,K)}${L(K,An)}<circle cx="${H[0]}" cy="${H[1]}" r="5" fill="#0a0b0c"/>${pr}</g>`}
+const rmo=matchMedia("(prefers-reduced-motion: reduce)").matches;
+(function loop(ts){const f=document.querySelector(".fig");if(f)f.innerHTML=draw(f.dataset.p,f.dataset.e,rmo?0:(1-Math.cos(ts/650))/2);requestAnimationFrame(loop)})(0);
+pickDay();initCur();render();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script></body></html>
